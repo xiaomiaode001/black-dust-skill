@@ -350,4 +350,6 @@ def main() -> int:
 
 
 if __name__ == "__main__":
+    from cli_output import configure_utf8_output
+    configure_utf8_output()
     raise SystemExit(main())

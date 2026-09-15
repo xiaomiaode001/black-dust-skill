@@ -6,6 +6,8 @@ from pathlib import Path
 from puzzle_compositor import audit_manifest
 
 if __name__ == '__main__':
+    from cli_output import configure_utf8_output
+    configure_utf8_output()
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('manifest', type=Path)
     args = parser.parse_args()
