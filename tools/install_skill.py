@@ -13,7 +13,7 @@ from uuid import uuid4
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "black-dust"
 SKILL_NAME = "black-dust"
-LICENSE_FILES = ("LICENSE", "LICENSING.md", "ASSET_LICENSE.md")
+LICENSE_FILES = ("LICENSE", "LICENSING.md", "ASSET_LICENSE.md", "CREATIVE-PROCESS.md")
 IGNORE = shutil.ignore_patterns("output", "tests", "__pycache__", "*.pyc", "*.pyo")
 
 

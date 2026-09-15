@@ -35,7 +35,7 @@ jobs:
           $target = Join-Path $env:RUNNER_TEMP "black-dust-skills"
           python tools/install_skill.py --target $target
           if ($LASTEXITCODE -ne 0) { throw "Skill installation failed" }
-          foreach ($name in @("SKILL.md", "LICENSE", "LICENSING.md", "ASSET_LICENSE.md", "assets/fonts/README.md", "assets/fonts/mashanzheng/OFL.txt")) {
+          foreach ($name in @("SKILL.md", "LICENSE", "LICENSING.md", "ASSET_LICENSE.md", "CREATIVE-PROCESS.md", "assets/fonts/README.md", "assets/fonts/mashanzheng/OFL.txt")) {
             if (-not (Test-Path (Join-Path $target "black-dust\$name"))) {
               throw "Installed file was not found: $name"
             }

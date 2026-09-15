@@ -25,6 +25,7 @@ REQUIRED = [
     ROOT / "black-dust" / "requirements.txt",
     ROOT / "examples" / "social-cover.request.example.json",
     ROOT / "docs" / "GALLERY.md",
+    ROOT / "black-dust" / "CREATIVE-PROCESS.md",
     ROOT / "docs" / "gallery" / "manifest.json",
 ]
 TEXT_SUFFIXES = {".md", ".py", ".yaml", ".yml", ".json", ".txt"}
@@ -98,6 +99,9 @@ def main() -> int:
         for marker in ("## 中文", "## English", "python tools/install_skill.py", "$black-dust"):
             if marker not in readme_text:
                 errors.append(f"README is missing bilingual/install marker: {marker}")
+        for marker in ("Midjourney 8.2", "black-dust/CREATIVE-PROCESS.md"):
+            if marker not in readme_text:
+                errors.append(f"README is missing its production disclosure: {marker}")
         referenced_boards = {
             target.strip("<>").split("#", 1)[0]
             for target in image_targets
@@ -107,6 +111,24 @@ def main() -> int:
             errors.append("README must display all eight unique category previews")
 
     manifest_path = ROOT / "docs" / "gallery" / "manifest.json"
+
+    creative_process = ROOT / "black-dust" / "CREATIVE-PROCESS.md"
+    if creative_process.is_file():
+        creative_text = creative_process.read_text(encoding="utf-8")
+        for marker in ("## 中文", "## English", "Midjourney 8.2", "确定性", "deterministic"):
+            if marker not in creative_text:
+                errors.append(f"creative process is missing disclosure marker: {marker}")
+        creative_targets = (
+            MARKDOWN_IMAGE.findall(creative_text)
+            + HTML_IMAGE.findall(creative_text)
+            + MARKDOWN_LINK.findall(creative_text)
+        )
+        for target in creative_targets:
+            if "://" in target or target.startswith(("data:", "#", "mailto:")):
+                continue
+            clean = target.strip("<>").split("#", 1)[0]
+            if clean and not (creative_process.parent / clean).resolve().exists():
+                errors.append(f"creative-process link not found: {target}")
     if manifest_path.is_file():
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
         if manifest.get("historical_image_count") != 36:

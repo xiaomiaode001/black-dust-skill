@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <a href="#中文">中文</a> · <a href="#english">English</a> · <a href="#新手安装推荐交给-codex">安装 / Install</a> · <a href="docs/GALLERY.md">完整图库 / Full gallery</a>
+  <a href="#中文">中文</a> · <a href="#english">English</a> · <a href="black-dust/CREATIVE-PROCESS.md">创作故事 / Story</a> · <a href="#新手安装推荐交给-codex">安装 / Install</a> · <a href="docs/GALLERY.md">完整图库 / Full gallery</a>
 </p>
 
 ---
@@ -22,6 +22,16 @@
 Black Dust（墨尘）是一套面向 Codex 的视觉生成 Skill。它把人物、动物、静物/产品、风景、建筑、机械、文字和文章主题转化为统一但不模板化的木炭视觉，并在需要时加入覆盖整幅画面的真实拼图切割。
 
 它重点解决三个常见问题：木炭画不能只是照片加噪点；拼图不能只是平面线稿；缺失块必须在形状、原图内容、颜色和光线上一一对应。
+
+### 创作缘起
+
+“墨尘”来自一个很具体的画面：一根木炭在纸面断裂，碎片与粉尘沿着动作方向散开；整幅画又像一张尚未完成的拼图。木炭代表灵感留下的手工痕迹，拼图代表把零散想法组织成完整画面。这个意象逐渐形成项目的核心句子：**把灵感，拼成画面**。
+
+本仓库中的视觉研究和画面底稿在探索阶段使用 **Midjourney 8.2** 生成或辅助生成，用于研究人物、动物、静物/产品、风景、建筑、机械、文字与社媒封面的构图、木炭气氛和纸面关系。作者随后进行主题设定、筛选、比较与多轮审美修订，并把稳定规律写入 Skill。
+
+Midjourney 8.2 形成的是连续画面的视觉底稿。最终中文和英文由本地程序排版；全幅拼图由共享边刀模生成；缺口和散件从同一底图、同一几何蒙版提取，再通过拼回图和哈希审计确认对应。图库记录了探索过程，其中部分早期案例保留了当时的问题；当前 Skill 规则与两张批准封面定义交付标准。
+
+详细的灵感来源、创作分工、制作流程与真实性说明见 [创作缘起与制作方法](black-dust/CREATIVE-PROCESS.md)。
 
 | 能力 | 结果 |
 |---|---|
@@ -186,6 +196,16 @@ Black Dust is a Codex skill for producing refined charcoal artwork, physically r
 
 Its central invariant is exact pairing: every removed piece shares the hole's geometry and original source pixels. Typography is composed before cutting, protected from missing pieces, and checked at the actual delivery ratio.
 
+### Origin and creative process
+
+Black Dust began with a concrete image: a charcoal stick breaking across paper, fragments and powder following the direction of the gesture, while the whole surface reads as an unfinished jigsaw. Charcoal represents the handmade trace of an idea; the jigsaw represents the act of organizing fragments into a complete image. This became the project's central line: **Turn inspiration into a complete picture.**
+
+The visual studies and image bases in this repository were generated or developed with **Midjourney 8.2** during exploration. They were used to study composition, charcoal atmosphere and paper relationships across portraits, animals, still life and products, landscapes, architecture, machinery, typography and social covers. The author then directed the themes, selected and compared results, refined the visual system through repeated review, and encoded the stable decisions in the Skill.
+
+Midjourney 8.2 supplies the continuous visual base. Local deterministic tools compose the final Chinese and English typography, cut the full-surface shared-edge jigsaw, extract each hole and loose piece from the same source pixels and mask, and verify the result through an assembled proof and hashes. The gallery includes earlier research stages as well as mature examples; the current Skill rules and two approved covers define the delivery standard.
+
+Read [Origin and Creative Process](black-dust/CREATIVE-PROCESS.md) for the full account of inspiration, authorship, production roles and technical verification.
+
 | Capability | What you get |
 |---|---|
 | Refined charcoal drawing | Form-following strokes, broad-side tone, smudged mid-values, selective lifting and natural paper tooth |
@@ -313,6 +333,7 @@ black-dust-skill/
 │  ├─ scripts/                     # Typography, jigsaw, audit and cached rendering
 │  └─ tests/                       # Geometry, material, pairing and cache regression
 ├─ docs/gallery/                   # Lightweight GitHub gallery boards
+│  ├─ CREATIVE-PROCESS.md          # Bilingual origin and production disclosure
 ├─ examples/                       # Reusable UTF-8 request examples
 ├─ tools/install_skill.py          # Beginner-safe cross-platform installer
 ├─ tools/check_release.py          # Public-tree release audit
