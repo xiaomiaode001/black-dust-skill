@@ -101,6 +101,8 @@ def main() -> int:
         for marker in ("## 中文", "## English", "python tools/install_skill.py", "$black-dust"):
             if marker not in readme_text:
                 errors.append(f"README is missing bilingual/install marker: {marker}")
+        if "### 项目简介\n\n墨尘是一套面向 Codex" not in readme_text:
+            errors.append("Chinese project introduction must use 墨尘 as its project name")
         for marker in ("Midjourney 8.2", "black-dust/CREATIVE-PROCESS.md"):
             if marker not in readme_text:
                 errors.append(f"README is missing its production disclosure: {marker}")
