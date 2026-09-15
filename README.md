@@ -77,6 +77,8 @@ Eight featured studies share a 16:9 presentation canvas without stretching or cr
 
 实际生成图片需要 Codex 会话中可用的图像生成/编辑工具；Python 脚本负责排版和拼图合成。安装不会购买图像服务，也不会自动配置第三方 API。
 
+项目随包提供 [开源中英文字体](black-dust/assets/fonts/README.md)，无需另外购买或安装字体。本机有定稿字体时优先沿用；缺失时自动使用替代字形，重新计算排版与保护区。
+
 #### 已下载 ZIP 时
 
 1. 在 GitHub 页面点击 **Code → Download ZIP**，解压项目。
@@ -210,6 +212,8 @@ Report the installation path, verification result and first-use instructions. Do
 
 Image generation requires an image-generation/editing tool available in your Codex session. The Python scripts handle typography and jigsaw compositing. Installation does not purchase image services or configure third-party APIs.
 
+[Open Chinese and Latin fonts](black-dust/assets/fonts/README.md) are bundled; no separate font purchase or installation is needed. Existing design fonts are preferred when available, otherwise role-specific fallbacks are used and the layout and protected regions are recalculated.
+
 #### If you already downloaded the ZIP
 
 1. On GitHub, choose **Code → Download ZIP**, then extract the project.
@@ -304,6 +308,7 @@ black-dust-skill/
 │  ├─ ASSET_LICENSE.md             # CC BY 4.0 for bundled imagery
 │  ├─ agents/openai.yaml           # Codex metadata and invocation policy
 │  ├─ assets/                      # Approved 3:4 and 5:2 visual standards
+│  │  └─ fonts/                    # Bundled OFL fonts with source notices
 │  ├─ references/                  # Charcoal, puzzle, type, platform and QA rules
 │  ├─ scripts/                     # Typography, jigsaw, audit and cached rendering
 │  └─ tests/                       # Geometry, material, pairing and cache regression

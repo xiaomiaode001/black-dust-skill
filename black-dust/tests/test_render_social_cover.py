@@ -74,6 +74,22 @@ class SocialCoverPipelineTests(unittest.TestCase):
             independent = original_audit(output / "final.puzzle.json")
             self.assertTrue(independent["passed"], independent["errors"])
 
+            previous_hash = cover["output_sha256"]
+            replacement = MODULE.cover_compositor.BUNDLED_FONTS["cjk"]
+            with mock.patch.object(MODULE.cover_compositor, "FONT_CJK_HAND", replacement):
+                changed = MODULE.render(request)
+                cached = MODULE.render(request)
+            self.assertEqual(changed["cache"]["cover_composite"], "rendered")
+            self.assertEqual(changed["cache"]["puzzle_composite_and_audit"], "rendered")
+            self.assertTrue(changed["pair_audit_passed"])
+            self.assertEqual(cached["cache"]["cover_composite"], "hit")
+            updated = json.loads((output / "typeset.cover.json").read_text(encoding="utf-8"))
+            self.assertNotEqual(updated["output_sha256"], previous_hash)
+            self.assertEqual(
+                updated["text_rendering"]["font_assets"]["cjk_hand"]["file"],
+                replacement.name,
+            )
+
 
 if __name__ == "__main__":
     unittest.main()

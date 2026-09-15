@@ -9,7 +9,13 @@ permissions:
 
 jobs:
   test:
-    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    env:
+      BLACK_DUST_FONT_PROFILE: portable
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-python@v7
@@ -29,8 +35,10 @@ jobs:
           $target = Join-Path $env:RUNNER_TEMP "black-dust-skills"
           python tools/install_skill.py --target $target
           if ($LASTEXITCODE -ne 0) { throw "Skill installation failed" }
-          foreach ($name in @("SKILL.md", "LICENSE", "LICENSING.md", "ASSET_LICENSE.md")) {
+          foreach ($name in @("SKILL.md", "LICENSE", "LICENSING.md", "ASSET_LICENSE.md", "assets/fonts/README.md", "assets/fonts/mashanzheng/OFL.txt")) {
             if (-not (Test-Path (Join-Path $target "black-dust\$name"))) {
               throw "Installed file was not found: $name"
             }
           }
+          python (Join-Path $target "black-dust/scripts/cover_compositor.py") --help
+          if ($LASTEXITCODE -ne 0) { throw "Installed typography engine could not load its fonts" }

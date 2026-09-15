@@ -155,7 +155,14 @@ def render(request_path: Path) -> dict[str, Any]:
     state = read_json(state_path) if state_path.is_file() else {}
 
     base_hash = sha256(base)
-    cover_signature = signature({"base_sha256": base_hash, **request["cover"]})
+    cover_signature = signature({
+        "base_sha256": base_hash,
+        "font_assets": cover_compositor.font_fingerprint(
+            request["cover"]["mode"], request["cover"]["layout"]
+        ),
+        "compositor_sha256": sha256(Path(cover_compositor.__file__)),
+        **request["cover"],
+    })
     cover_assets = state.get("cover_artifacts", {})
     cover_hit = (
         state.get("schema") == STATE_SCHEMA

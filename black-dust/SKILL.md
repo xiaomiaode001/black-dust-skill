@@ -40,6 +40,8 @@ description: Generate or transform images in the Black Dust / 墨尘 visual syst
 
 ## 执行路线
 
+字体可移植性：排字脚本优先使用本机定稿字体，缺失时回退到 [assets/fonts/](assets/fonts/README.md) 中随包的 OFL 字体。替代字形需要重新检查排版与保护区，不能声称与品牌定稿像素一致；manifest 与缓存键记录实际字体哈希。不要假设 Windows 字体路径存在。
+
 ### Brief / Prompt
 
 输出模块化结果，而不是一条无法编辑的长 Prompt：

@@ -8,6 +8,7 @@ Black Dust / 墨尘按内容分别授权。以下范围同时适用于 GitHub �
 |---|---|
 | Skill 规则、提示词、脚本、测试、配置、说明文档与示例请求 | [MIT](LICENSE) |
 | 随仓库发布的 `black-dust/assets/` 与 `docs/gallery/` 中的图片、展示板及板内案例 | [CC BY 4.0](ASSET_LICENSE.md) |
+| `assets/fonts/` 中的第三方字体 | 各字体目录内的 [SIL OFL 1.1](assets/fonts/README.md) |
 
 图片适用其专属授权，不包含在 MIT 软件授权范围内。安装后 `black-dust/assets/` 对应 Skill 目录中的 `assets/`。另有明确授权标注的第三方材料按原条款使用。
 
@@ -31,6 +32,7 @@ Black Dust licenses different content separately. These scopes apply to both the
 |---|---|
 | Skill rules, prompts, scripts, tests, configuration, documentation and example requests | [MIT](LICENSE) |
 | Bundled images in `black-dust/assets/` and `docs/gallery/`, including boards and their constituent studies | [CC BY 4.0](ASSET_LICENSE.md) |
+| Third-party fonts in `assets/fonts/` | [SIL OFL 1.1](assets/fonts/README.md), as included in each font directory |
 
 Images are excluded from the MIT software grant and use their specific asset license. After installation, `black-dust/assets/` corresponds to `assets/` in the skill directory. Separately identified third-party material retains its stated terms.
 

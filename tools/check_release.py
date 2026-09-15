@@ -17,6 +17,7 @@ REQUIRED = [
     ROOT / "black-dust" / "LICENSE",
     ROOT / "black-dust" / "LICENSING.md",
     ROOT / "black-dust" / "ASSET_LICENSE.md",
+    ROOT / "black-dust" / "assets" / "fonts" / "README.md",
     ROOT / ".gitignore",
     ROOT / "tools" / "install_skill.py",
     ROOT / "black-dust" / "SKILL.md",
@@ -165,6 +166,18 @@ def main() -> int:
                 errors.append(f"image license is missing its scope: {scope}")
     if "<your-repository-url>" in readme.read_text(encoding="utf-8"):
         warnings.append("replace the README clone URL after the GitHub repository is created")
+
+    font_root = ROOT / "black-dust" / "assets" / "fonts"
+    font_readme = font_root / "README.md"
+    if font_readme.is_file() and "SIL Open Font License" not in font_readme.read_text(encoding="utf-8"):
+        errors.append("bundled fonts must carry their OFL notice")
+    font_paths = list(font_root.rglob("*.ttf"))
+    if len(font_paths) != 5:
+        errors.append("release must contain all five bundled fonts")
+    for font in font_paths:
+        notice = font.parent / "OFL.txt"
+        if not notice.is_file() or "SIL OPEN FONT LICENSE" not in notice.read_text(encoding="utf-8"):
+            errors.append(f"bundled font is missing its OFL license: {font.relative_to(ROOT)}")
 
     result = {
         "schema": "black-dust-release-check/v1",

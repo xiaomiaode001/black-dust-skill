@@ -99,8 +99,28 @@ class CoverCompositorTests(unittest.TestCase):
             self.assertLess(boxes["english_mark"][3] - pad,
                             boxes["subtitle"][1] + pad)
             self.assertEqual(result["layout"], "brand-lockup")
-            self.assertEqual(result["text_rendering"]["cjk_skeleton"], "msyhbd.ttc")
-            self.assertEqual(result["text_rendering"]["latin_skeleton"], "ARIALN.TTF")
+            self.assertEqual(result["text_rendering"]["cjk_skeleton"], MODULE.FONT_CJK_BOLD.name)
+            self.assertEqual(result["text_rendering"]["latin_skeleton"], MODULE.FONT_LATIN_NARROW.name)
+            self.assertEqual(result["text_rendering"]["font_assets"], MODULE.font_fingerprint("brand"))
+
+    def test_bundled_fonts_load_without_system_fonts_and_have_real_cjk_glyphs(self):
+        missing = Path("unavailable-system-font.ttf")
+        for role, bundled in MODULE.BUNDLED_FONTS.items():
+            selected = MODULE.select_font(missing, bundled, "auto")
+            font = MODULE.load_font(selected, 48)
+            self.assertTrue(font.getname()[0])
+            if role.startswith("cjk"):
+                missing_glyph = bytes(font.getmask("\u0378"))
+                for char in "墨尘拼图木炭我们以为其实它准备了十多年":
+                    self.assertNotEqual(bytes(font.getmask(char)), missing_glyph, (role, char))
+
+    def test_portable_profile_chooses_bundled_font_even_if_preferred_exists(self):
+        preferred = MODULE.BUNDLED_FONTS["cjk_bold"]
+        bundled = MODULE.BUNDLED_FONTS["cjk_hand"]
+        self.assertEqual(MODULE.select_font(preferred, bundled, "auto"), preferred)
+        self.assertEqual(MODULE.select_font(preferred, bundled, "portable"), bundled)
+        with self.assertRaises(FileNotFoundError):
+            MODULE.select_font(preferred, Path("unavailable-bundled-font.ttf"), "portable")
 
     def test_article_brand_lockup_is_separated_and_center_crop_safe(self):
         with tempfile.TemporaryDirectory() as tmp:

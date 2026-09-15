@@ -10,6 +10,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import random
 from dataclasses import dataclass
 from pathlib import Path
@@ -21,11 +22,33 @@ from PIL import Image, ImageChops, ImageDraw, ImageFilter, ImageFont, ImageOps, 
 ORANGE = (255, 90, 31, 255)
 CHARCOAL = (30, 29, 27, 255)
 GRAPHITE = (67, 64, 60, 255)
-FONT_CJK_BOLD = Path(r"C:\Windows\Fonts\msyhbd.ttc")
-FONT_CJK = Path(r"C:\Windows\Fonts\msyh.ttc")
-FONT_CJK_HAND = Path(r"C:\Windows\Fonts\STXINWEI.TTF")
-FONT_LATIN_NARROW = Path(r"C:\Windows\Fonts\ARIALN.TTF")
-FONT_LATIN_HAND = Path(r"C:\Windows\Fonts\Inkfree.ttf")
+FONT_ROOT = Path(__file__).resolve().parents[1] / "assets" / "fonts"
+BUNDLED_FONTS = {
+    "cjk_bold": FONT_ROOT / "zcoolqingkehuangyou" / "ZCOOLQingKeHuangYou-Regular.ttf",
+    "cjk": FONT_ROOT / "zcoolxiaowei" / "ZCOOLXiaoWei-Regular.ttf",
+    "cjk_hand": FONT_ROOT / "mashanzheng" / "MaShanZheng-Regular.ttf",
+    "latin_narrow": FONT_ROOT / "barlowcondensed" / "BarlowCondensed-Regular.ttf",
+    "latin_hand": FONT_ROOT / "kalam" / "Kalam-Regular.ttf",
+}
+
+
+def select_font(preferred: Path, bundled: Path, profile: str | None = None) -> Path:
+    """Retain installed design fonts, with a redistributable cross-platform fallback."""
+    profile = profile or os.environ.get("BLACK_DUST_FONT_PROFILE", "auto")
+    if profile not in {"auto", "portable"}:
+        raise ValueError("BLACK_DUST_FONT_PROFILE must be auto or portable")
+    if profile == "auto" and preferred.is_file():
+        return preferred
+    if bundled.is_file():
+        return bundled
+    raise FileNotFoundError(f"Bundled font is missing; reinstall the complete skill: {bundled}")
+
+
+FONT_CJK_BOLD = select_font(Path(r"C:\Windows\Fonts\msyhbd.ttc"), BUNDLED_FONTS["cjk_bold"])
+FONT_CJK = select_font(Path(r"C:\Windows\Fonts\msyh.ttc"), BUNDLED_FONTS["cjk"])
+FONT_CJK_HAND = select_font(Path(r"C:\Windows\Fonts\STXINWEI.TTF"), BUNDLED_FONTS["cjk_hand"])
+FONT_LATIN_NARROW = select_font(Path(r"C:\Windows\Fonts\ARIALN.TTF"), BUNDLED_FONTS["latin_narrow"])
+FONT_LATIN_HAND = select_font(Path(r"C:\Windows\Fonts\Inkfree.ttf"), BUNDLED_FONTS["latin_hand"])
 
 
 @dataclass(frozen=True)
@@ -64,6 +87,15 @@ def load_font(path: Path, size: int) -> ImageFont.FreeTypeFont:
     if not path.exists():
         raise FileNotFoundError(f"Required deterministic font is missing: {path}")
     return ImageFont.truetype(str(path), max(8, round(size)))
+
+
+def font_fingerprint(mode: str = "article", layout: str = "theme-title") -> dict:
+    """Include actual font bytes in manifests and cache keys across machines."""
+    if mode == "brand" or layout == "brand-lockup":
+        fonts = {"cjk_bold": FONT_CJK_BOLD, "cjk": FONT_CJK, "latin_narrow": FONT_LATIN_NARROW}
+    else:
+        fonts = {"cjk_hand": FONT_CJK_HAND, "latin_hand": FONT_LATIN_HAND}
+    return {role: {"file": path.name, "sha256": sha256(path)} for role, path in fonts.items()}
 
 
 def text_bbox(draw: ImageDraw.ImageDraw, xy: tuple[int, int], text: str,
@@ -716,6 +748,7 @@ def compose(input_path: Path, output_path: Path, manifest_path: Path,
         "text_rendering": {
             "cjk_skeleton": cjk_skeleton.name,
             "latin_skeleton": latin_skeleton.name,
+            "font_assets": font_fingerprint(mode, resolved_layout),
             "surface": "role-weighted pigment load + sampled paper tooth + low-frequency charcoal pressure + directional dry-brush",
             "visibility": "negative-space placement + adaptive feathered quieting",
             "occlusion_policy": "text above scene; holes and loose pieces excluded from protected boxes",
