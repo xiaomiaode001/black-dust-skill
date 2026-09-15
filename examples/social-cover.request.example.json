@@ -1,0 +1,33 @@
+{
+  "base": "./base.png",
+  "output_dir": "./rendered",
+  "cover": {
+    "preset": "twitter",
+    "layout": "theme-title",
+    "title": "我们以为AI只用了三年，其实它准备了十多年",
+    "subtitle": "",
+    "kicker": "",
+    "title_accent": "十多年",
+    "title_underline": "十多年"
+  },
+  "subject_protected_boxes": [
+    [0.55, 0.02, 1.0, 0.96]
+  ],
+  "puzzle": {
+    "rows": 10,
+    "cols": 24,
+    "missing_count": 3,
+    "missing_cells": [[4, 1], [5, 6], [4, 12]],
+    "piece_placements": [],
+    "cut_style": "standard",
+    "material_preset": "ivory-board",
+    "knob_ratio": 0.20,
+    "seam_width": 2,
+    "max_rotation": 14,
+    "hole_color": "#D0BCAE",
+    "shape_policy": "mixed",
+    "content_policy": "any",
+    "min_piece_detail": 0,
+    "seed": 73
+  }
+}

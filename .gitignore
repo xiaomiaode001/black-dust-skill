@@ -1,0 +1,25 @@
+# Generated deliveries and local caches
+output/
+validation/
+BLACK_DUST_PROJECT_KICKOFF.md
+**/.render-state.json
+**/.render-stage-*/
+**/.pieces-old-*/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Editors and operating systems
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Local packaging artifacts
+*.zip
+*.tmp
+.install-smoke/

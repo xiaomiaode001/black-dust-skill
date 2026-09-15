@@ -1,0 +1,194 @@
+{
+  "schema": "black-dust-gallery/v1",
+  "historical_image_count": 36,
+  "boards": [
+    {
+      "file": "01-portrait.webp",
+      "title": "01 PORTRAIT",
+      "sources": [
+        "1.png",
+        "2.png",
+        "3.png",
+        "3（2）.png"
+      ],
+      "size": [
+        1440,
+        958
+      ],
+      "preview": {
+        "file": "01-portrait-preview.webp",
+        "source": "3（2）.png",
+        "size": [
+          1440,
+          810
+        ]
+      }
+    },
+    {
+      "file": "02-animal.webp",
+      "title": "02 ANIMAL",
+      "sources": [
+        "4.png",
+        "4（2）.png",
+        "4（3）.png"
+      ],
+      "size": [
+        1440,
+        958
+      ],
+      "preview": {
+        "file": "02-animal-preview.webp",
+        "source": "4（3）.png",
+        "size": [
+          1440,
+          810
+        ]
+      }
+    },
+    {
+      "file": "03-still-life.webp",
+      "title": "03 STILL LIFE / PRODUCT",
+      "sources": [
+        "5.png",
+        "5（2）.png",
+        "5（3）.png"
+      ],
+      "size": [
+        1440,
+        958
+      ],
+      "preview": {
+        "file": "03-still-life-preview.webp",
+        "source": "5（3）.png",
+        "size": [
+          1440,
+          810
+        ]
+      }
+    },
+    {
+      "file": "04-landscape.webp",
+      "title": "04 LANDSCAPE",
+      "sources": [
+        "6.png",
+        "6（2）.png",
+        "6（21）.png"
+      ],
+      "size": [
+        1440,
+        958
+      ],
+      "preview": {
+        "file": "04-landscape-preview.webp",
+        "source": "6（21）.png",
+        "size": [
+          1440,
+          810
+        ]
+      }
+    },
+    {
+      "file": "05-architecture.webp",
+      "title": "05 ARCHITECTURE",
+      "sources": [
+        "6（3）.png",
+        "6（4）.png",
+        "6（5）.png"
+      ],
+      "size": [
+        1440,
+        958
+      ],
+      "preview": {
+        "file": "05-architecture-preview.webp",
+        "source": "6（5）.png",
+        "size": [
+          1440,
+          810
+        ]
+      }
+    },
+    {
+      "file": "06-mechanical.webp",
+      "title": "06 MECHANICAL / TRANSIT",
+      "sources": [
+        "7.png",
+        "7（2）.png",
+        "7（3）.png",
+        "8.png",
+        "8（2）.png",
+        "8（3）.png",
+        "8（4）.png"
+      ],
+      "size": [
+        1440,
+        1790
+      ],
+      "preview": {
+        "file": "06-mechanical-preview.webp",
+        "source": "8（4）.png",
+        "size": [
+          1440,
+          810
+        ]
+      }
+    },
+    {
+      "file": "07-typography.webp",
+      "title": "07 CHINESE / ENGLISH TYPE",
+      "sources": [
+        "9.png",
+        "9（2）.png",
+        "9（3）.png",
+        "10.png",
+        "10（1）.png",
+        "10（2）.png"
+      ],
+      "size": [
+        1440,
+        1374
+      ],
+      "preview": {
+        "file": "07-typography-preview.webp",
+        "source": "9（3）.png",
+        "size": [
+          1440,
+          810
+        ]
+      }
+    },
+    {
+      "file": "08-social-cover.webp",
+      "title": "08 SOCIAL COVER / CHARCOAL OBJECT",
+      "sources": [
+        "11.png",
+        "11（2）.png",
+        "11（3）.png",
+        "11（5）.png",
+        "11(6).png",
+        "12.png",
+        "13.png"
+      ],
+      "size": [
+        1440,
+        1790
+      ],
+      "preview": {
+        "file": "08-social-cover-preview.webp",
+        "source": "11(6).png",
+        "size": [
+          1440,
+          810
+        ]
+      }
+    }
+  ],
+  "latest": {
+    "file": "09-latest-cover.webp",
+    "source": "final.png",
+    "size": [
+      1500,
+      600
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+name: Validate Black Dust Skill
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: black-dust/requirements.txt
+      - name: Install dependencies
+        run: python -m pip install -r black-dust/requirements.txt
+      - name: Run regression tests
+        run: python -m unittest discover -s black-dust/tests -v
+      - name: Check release tree
+        run: python tools/check_release.py
+      - name: Smoke-test beginner installer
+        shell: pwsh
+        run: |
+          $target = Join-Path $env:RUNNER_TEMP "black-dust-skills"
+          python tools/install_skill.py --target $target
+          if ($LASTEXITCODE -ne 0) { throw "Skill installation failed" }
+          foreach ($name in @("SKILL.md", "LICENSE", "LICENSING.md", "ASSET_LICENSE.md")) {
+            if (-not (Test-Path (Join-Path $target "black-dust\$name"))) {
+              throw "Installed file was not found: $name"
+            }
+          }

@@ -1,0 +1,74 @@
+version: 1
+verified_on: "2026-09-04"
+
+presets:
+  brand_wide:
+    role: "wide_social_brand_cover"
+    aspect_ratio: "16:9"
+    canvas_px: [1672, 941]
+    source: "project reference family 11(6) / 11（5）"
+    notes:
+      - "Use for Black Dust brand introductions and portfolio landing covers."
+      - "Keep the upper text cluster separate from the lower charcoal-stick material axis."
+
+  article_wide:
+    role: "wide_article_theme_cover"
+    aspect_ratio: "16:9"
+    canvas_px: [1500, 844]
+    source: "project editorial preset"
+    notes:
+      - "Use negative space for the title and keep the article's charcoal-drawn subject unobstructed."
+      - "This is a general editorial cover; use the WeChat lead preset when center-square cropping is required."
+
+  xiaohongshu:
+    role: "note_cover"
+    aspect_ratio: "3:4"
+    canvas_px: [1080, 1440]
+    source: "approved brand reference: assets/skill-cover.png"
+    notes:
+      - "Keep title and subject legible at feed thumbnail size."
+      - "Use the three-tier 墨尘 / SKILL / 把灵感，拼成画面 lockup for brand mode."
+      - "Use exactly three missing-piece pairs outside the text, charcoal stick, fracture, and dust-flow protection zones."
+      - "Highlight only 拼 in the subtitle and use one charcoal underline below 拼成画面."
+
+  twitter:
+    role: "wide_social_cover"
+    aspect_ratio: "5:2"
+    canvas_px: [1500, 600]
+    source: "approved 5:2 brand reference: assets/social-cover-5x2.png"
+    notes:
+      - "Recompose directly for 5:2; never crop a 16:9 layout and call it complete."
+      - "Keep the 墨尘 + SKILL lockup in the upper-left, the subtitle on its own line, and the charcoal-stick material axis in the lower band."
+      - "Highlight only 拼 in the subtitle and use one charcoal underline below 拼成画面."
+      - "Use exactly three missing-piece pairs in asymmetric negative-space positions, with exact mask, source-pixel, and assembled-proof matching."
+
+  wechat_article_lead:
+    role: "official_account_lead_cover"
+    aspect_ratio: "2.35:1"
+    canvas_px: [900, 383]
+    safe_zone:
+      type: "center_square"
+      box_px: [258, 0, 641, 383]
+      purpose: "Keep essential title, brand, and subject resilient to square thumbnail crops."
+    sources:
+      - "https://www.canva.cn/learn/public-number-picture-size/"
+      - "https://www.canva.cn/sizes/wechat-official-account/"
+    notes:
+      - "Use the full width for atmosphere and dust flow; keep irreplaceable content near the center."
+
+  wechat_article_secondary:
+    role: "official_account_secondary_cover"
+    aspect_ratio: "1:1"
+    canvas_px: [200, 200]
+    sources:
+      - "https://www.canva.cn/learn/public-number-picture-size/"
+      - "https://www.canva.cn/sizes/wechat-official-account/"
+    notes:
+      - "Use one short title or mark, one subject, and minimal missing pieces."
+
+  custom:
+    role: "user_defined"
+    aspect_ratio: null
+    canvas_px: null
+    notes:
+      - "Require an explicit ratio or pixel size before final image production."

@@ -1,0 +1,8 @@
+interface:
+  display_name: "Black Dust / 墨尘"
+  short_description: "Refined charcoal art and exact jigsaw visuals / 细腻木炭与精确拼图"
+  icon_large: "./assets/skill-cover.png"
+  brand_color: "#FF5A1F"
+  default_prompt: "Use $black-dust to generate a finished Black Dust image from this reference or concept. Preserve refined charcoal detail, build a realistic edge-to-edge jigsaw when requested, and provide an exact assembled proof for every removed piece."
+policy:
+  allow_implicit_invocation: true
