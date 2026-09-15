@@ -102,7 +102,7 @@ description: Generate or transform images in the Black Dust / 墨尘 visual syst
 - 每轮 exact composite 都要保存无缺口的 `assembled_output`。它必须由同一底图、刀模和拼缝参数重建，并通过 `assembled_sha256` 审计；用它直接查看建筑线条、产品结构和其他图案在拼回后是否连续。
 - 默认避开眼睛、脸部关键点、Logo、标题、产品核心结构、建筑关键几何和主要引导线。
 - 强调橙固定为 `#FF5A1F`，只作小面积锚点；其余为 warm ivory、cream、charcoal black 和 graphite gray。
-- 技术 Skill 名为 `black-dust`，中文对外名为“墨尘 Skill”，通用英文署名为 `BLACK DUST`；品牌封面锁定字组则显示“墨尘 / SKILL / 把灵感，拼成画面”。早期“黑尘”和 `I'M BLACK DUST` 只作为探索参考，除非用户明确指定。
+- 技术 Skill 名为 `black-dust`，唯一中文名称为“墨尘”或“墨尘 Skill”，通用英文署名为 `BLACK DUST`；品牌封面锁定字组则显示“墨尘 / SKILL / 把灵感，拼成画面”。中文名称不使用任何历史变体，用户输入出现误称时也统一纠正为“墨尘”。
 
 ## 输出完成条件
 

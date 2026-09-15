@@ -21,6 +21,8 @@
 
 Black Dust（墨尘）是一套面向 Codex 的视觉生成 Skill。它把人物、动物、静物/产品、风景、建筑、机械、文字和文章主题转化为统一但不模板化的木炭视觉，并在需要时加入覆盖整幅画面的真实拼图切割。
 
+项目唯一中文名称为 **墨尘**；Black Dust 保留为英文项目名，black-dust 保留为 Skill ID 与仓库路径。
+
 它重点解决三个常见问题：木炭画不能只是照片加噪点；拼图不能只是平面线稿；缺失块必须在形状、原图内容、颜色和光线上一一对应。
 
 ### 创作缘起
@@ -193,6 +195,8 @@ Skill 规则、提示词、脚本和说明文档使用 [MIT 许可证](LICENSE)�
 ### Overview
 
 Black Dust is a Codex skill for producing refined charcoal artwork, physically readable full-surface jigsaws, and editorial social covers. It supports portraits, animals, still life and products, landscapes, architecture, machinery, typography, and article-led cover design without forcing every subject into the same dust or crack template.
+
+The project's only Chinese name is **墨尘**. Black Dust remains the English project name, while black-dust is the Skill ID and repository path.
 
 Its central invariant is exact pairing: every removed piece shares the hole's geometry and original source pixels. Typography is composed before cutting, protected from missing pieces, and checked at the actual delivery ratio.
 

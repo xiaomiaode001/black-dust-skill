@@ -53,7 +53,7 @@ python scripts/cover_compositor.py clean-base.png typeset-base.png `
 - 英文展示：`BLACK DUST`
 - 副标题：`把灵感，拼成画面`
 
-早期参考中的“黑尘”和 `I'M BLACK DUST` 属于探索稿；只有用户明确要求时才作为主标题。
+中文品牌名只使用“墨尘”或“墨尘 Skill”，不沿用历史参考中的其他中文变体。通用英文署名为 `BLACK DUST`；品牌封面按已批准字组使用 `SKILL`。
 
 ## 封面模式
 

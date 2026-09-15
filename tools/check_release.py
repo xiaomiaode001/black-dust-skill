@@ -78,6 +78,8 @@ def main() -> int:
                 continue
             if LOCAL_PATH.search(text):
                 errors.append(f"local absolute path exposed: {relative}")
+            if "\u9ed1\u5c18" in text:
+                errors.append(f"deprecated Chinese project name found: {relative}")
 
     readme = ROOT / "README.md"
     if readme.is_file():
